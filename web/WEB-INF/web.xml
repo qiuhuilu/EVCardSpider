@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+         http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <!--DispatcherServlet前端控制器-->
+    <servlet>
+        <servlet-name>dispacthServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <!--springmvc配置文件：默认是/WEB-INF/[servlet-name]-seervlet.xml -->
+            <param-name>contextConfigLocation</param-name>
+            <!--classpath下新建springmvc配置文件applicationContext.xml-->
+            <param-value>classpath:applicationContext.xml</param-value>
+        </init-param>
+        <!--配置随服务器启动自动初始化-->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <!--servlet路径映射-->
+    <servlet-mapping>
+        <servlet-name>dispacthServlet</servlet-name>
+        <!--指定映射拦截方式
+        1）精确匹配 如/user/user.html   /index.html   /user/addUser.action
+        2）扩展名匹配   如*.html    *.jsp
+        3）路径匹配   如/user/*    /*
+        4）缺省匹配   /
+        匹配顺序：精确匹配>路径匹配>扩展名匹配>缺省匹配
+        /*与/的区别:/*属于路径匹配  可以匹配所有的request  优先级高于扩展名匹配，所以会对.jsp 静态文件(.js .html .png)等都会拦截，这个一般不用
+        /是缺省匹配，由于tomcat中会配置.jsp扩展名的匹配规则   所以不会对.jsp进行拦截，但是会拦截静态文件(.js .html .png等)
+        -->
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+</web-app>
