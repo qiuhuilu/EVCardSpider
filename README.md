@@ -1,6 +1,6 @@
 # EVCardSpider
 1.查询站点车辆接口
-https://mas.evcard.vip:8443/evcard-mas/evcardapp?service=getAllVehicleIList
+https://mas.evcard.vip:8443/evcard-mas/evcardapp?service=getVehicleInfoList
 
 {
     "serialNum" : 0,
